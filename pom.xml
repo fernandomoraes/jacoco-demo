@@ -14,7 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <jacoco.results.dist>${project.build.directory}/tests/results</jacoco.results.dist>
+        <jacoco.directory>${project.build.directory}/jacoco</jacoco.directory>
         <version.junit>4.12</version.junit>
         <version.jacoco>0.8.1</version.jacoco>
     </properties>
@@ -38,7 +38,7 @@
                     <excludes>
                         <exclude>com/moraes/jacoco/demo/NonTestedCalculator.class</exclude>
                     </excludes>
-                    <outputDirectory>${jacoco.results.dist}</outputDirectory>
+                    <outputDirectory>${jacoco.directory}/results</outputDirectory>
                 </configuration>
                 <executions>
                     <execution>
@@ -46,6 +46,9 @@
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
+                        <configuration>
+                            <destFile>${jacoco.directory}/jacoco.exec</destFile>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>jacoco-report</id>
@@ -53,6 +56,9 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <configuration>
+                            <dataFile>${jacoco.directory}/jacoco.exec</dataFile>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>jacoco-check</id>
@@ -61,6 +67,7 @@
                             <goal>check</goal>
                         </goals>
                         <configuration>
+                            <dataFile>${jacoco.directory}/jacoco.exec</dataFile>
                             <rules>
                                 <rule>
                                     <element>BUNDLE</element>
