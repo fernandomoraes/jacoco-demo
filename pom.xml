@@ -38,6 +38,7 @@
                     <excludes>
                         <exclude>com/moraes/jacoco/demo/NonTestedCalculator.class</exclude>
                     </excludes>
+                    <outputDirectory>${jacoco.results.dist}</outputDirectory>
                 </configuration>
                 <executions>
                     <execution>
@@ -45,9 +46,6 @@
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
-                        <configuration>
-                            <destFile>${jacoco.results.dist}/jacoco.exec</destFile>
-                        </configuration>
                     </execution>
                     <execution>
                         <id>jacoco-report</id>
@@ -55,10 +53,6 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
-                        <configuration>
-                            <dataFile>${jacoco.results.dist}/jacoco.exec</dataFile>
-                            <outputDirectory>${jacoco.results.dist}</outputDirectory>
-                        </configuration>
                     </execution>
                     <execution>
                         <id>jacoco-check</id>
@@ -67,7 +61,6 @@
                             <goal>check</goal>
                         </goals>
                         <configuration>
-                            <dataFile>${jacoco.results.dist}/jacoco.exec</dataFile>
                             <rules>
                                 <rule>
                                     <element>BUNDLE</element>
