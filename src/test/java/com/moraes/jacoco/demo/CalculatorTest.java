@@ -12,4 +12,10 @@ public class CalculatorTest {
         assertEquals(4, calculator.sum(2, 2));
     }
 
+    @Test
+    public void should_multiple_two_integers() {
+        Calculator calculator = new Calculator();
+        assertEquals(9, calculator.multiple(3, 3));
+    }
+
 }
